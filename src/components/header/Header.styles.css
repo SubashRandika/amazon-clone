@@ -1,0 +1,131 @@
+.header {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	background-color: #131921;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+.header__logoContainer {
+	margin: 0 75px 0 50px;
+	padding: 5px 15px 0 15px;
+	height: 40px;
+	border: 1px solid transparent;
+	cursor: pointer;
+}
+
+.header__logoContainer:hover {
+	border: 1px solid #ffffff;
+	border-radius: 2px;
+}
+
+.header__logo {
+	width: 100px;
+	object-fit: contain;
+}
+
+.header__search {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	border-radius: 0;
+}
+
+.header__search:focus-within {
+	box-shadow: 0 0 0 3px #f90, 0 0 0 3px rgba(255, 153, 0, 0.5);
+	-moz-box-shadow: 0 0 0 3px #f90, 0 0 0 3px rgba(255, 153, 0, 0.5);
+	-webkit-box-shadow: 0 0 0 3px #f90, 0 0 0 3px rgba(255, 153, 0, 0.5);
+	border-radius: 4px;
+}
+
+.header__searchInput {
+	height: 40px;
+	width: 100%;
+	font-size: 15px;
+	color: #111111;
+	font-family: inherit;
+	text-indent: 8px;
+	border: none;
+	padding: 7px 10px 10px 0;
+	border-radius: 4px 0 0 4px;
+	outline: none;
+}
+
+.header__searchIcon {
+	font-size: 40px !important;
+	background-color: #febd69;
+	color: #111111;
+	padding: 5px;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+}
+
+.header__searchIcon:hover {
+	background-color: #f3a847;
+}
+
+.header__nav {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 0 25px;
+	height: 53px;
+	width: 360px;
+}
+
+.header__menuItem {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: #ffffff;
+	padding: 0 15px;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+
+.header__menuItem:hover {
+	border: 1px solid #ffffff;
+	border-radius: 2px;
+}
+
+.header__menuItemTextOne {
+	font-size: 12px;
+	line-height: 14px;
+	height: 14px;
+	font-weight: 400;
+	color: #cccccc;
+}
+
+.header__menuItemTextTwo {
+	font-size: 14px;
+	line-height: 15px;
+	font-weight: 700;
+	padding-top: 2px;
+}
+
+.header__menuBasket {
+	display: flex;
+	align-items: flex-end;
+	padding: 0 20px 6px 15px;
+	border: 1px solid transparent;
+	cursor: pointer;
+}
+
+.header__menuBasket:hover {
+	border: 1px solid #ffffff;
+	border-radius: 2px;
+}
+
+.header__basketIcon {
+	font-size: 32px !important;
+	color: #ffffff;
+}
+
+.header__basketText {
+	color: #ffffff;
+	font-size: 14px;
+	line-height: 15px;
+	font-weight: 700;
+	padding-bottom: 3px;
+}
