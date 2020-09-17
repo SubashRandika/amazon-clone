@@ -19,15 +19,15 @@ const StyledBadge = withStyles((theme) => ({
 function Header() {
 	return (
 		<div className='header'>
-			<div className='header__logoContainer'>
-				<Link to='/'>
+			<Link to='/'>
+				<div className='header__logoContainer'>
 					<img
 						className='header__logo'
 						src='http://pngimg.com/uploads/amazon/amazon_PNG11.png'
 						alt='Amazon Logo'
 					/>
-				</Link>
-			</div>
+				</div>
+			</Link>
 			<div className='header__search'>
 				<input type='text' className='header__searchInput' />
 				<SearchIcon className='header__searchIcon' />
