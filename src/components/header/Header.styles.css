@@ -3,7 +3,7 @@
 	align-items: center;
 	height: 60px;
 	background-color: #131921;
-	position: sticky;
+	position: relative;
 	top: 0;
 	z-index: 100;
 }

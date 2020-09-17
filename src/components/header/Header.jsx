@@ -44,7 +44,7 @@ function Header() {
 					<span className='header__menuItemTextTwo'>Prime</span>
 				</div>
 				<div className='header__menuBasket'>
-					<StyledBadge badgeContent={0} invisible={false}>
+					<StyledBadge badgeContent={0}>
 						<ShoppingCartOutlinedIcon className='header__basketIcon' />
 					</StyledBadge>
 					<div className='header__basketText'>Cart</div>
