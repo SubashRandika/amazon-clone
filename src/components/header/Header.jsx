@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
@@ -19,11 +20,13 @@ function Header() {
 	return (
 		<div className='header'>
 			<div className='header__logoContainer'>
-				<img
-					className='header__logo'
-					src='http://pngimg.com/uploads/amazon/amazon_PNG11.png'
-					alt='Amazon Logo'
-				/>
+				<Link to='/'>
+					<img
+						className='header__logo'
+						src='http://pngimg.com/uploads/amazon/amazon_PNG11.png'
+						alt='Amazon Logo'
+					/>
+				</Link>
 			</div>
 			<div className='header__search'>
 				<input type='text' className='header__searchInput' />
@@ -43,12 +46,14 @@ function Header() {
 					<span className='header__menuItemTextOne'>Your</span>
 					<span className='header__menuItemTextTwo'>Prime</span>
 				</div>
-				<div className='header__menuBasket'>
-					<StyledBadge badgeContent={0}>
-						<ShoppingCartOutlinedIcon className='header__basketIcon' />
-					</StyledBadge>
-					<div className='header__basketText'>Cart</div>
-				</div>
+				<Link to='/checkout'>
+					<div className='header__menuBasket'>
+						<StyledBadge badgeContent={0}>
+							<ShoppingCartOutlinedIcon className='header__basketIcon' />
+						</StyledBadge>
+						<div className='header__basketText'>Cart</div>
+					</div>
+				</Link>
 			</div>
 		</div>
 	);
