@@ -1,15 +1,24 @@
 import React from "react";
 import CurrencyFormat from "react-currency-format";
+import { useStateValue } from "../../redux/StateProvider";
 import "./Subtotal.styles.css";
 
 function Subtotal() {
+	// pull cart items from the data layer.
+	const [{ cart }, dispatch] = useStateValue();
+
+	// calculate total price of items in the cart.
+	const calculateTotalPrice = () => {
+		return cart.reduce((sumPrice, currentItem) => currentItem.price + sumPrice, 0);
+	};
+
 	return (
 		<div className='subtotal'>
 			<CurrencyFormat
 				renderText={(formattedValue) => (
 					<>
 						<p className='subtotal__text'>
-							Subtotal (0 items): <strong>0</strong>
+							Subtotal ({cart.length} items): <strong>{formattedValue}</strong>
 						</p>
 						<small className='subtotal__gift'>
 							<input type='checkbox' />
@@ -18,7 +27,7 @@ function Subtotal() {
 					</>
 				)}
 				decimalScale={2}
-				value={0}
+				value={calculateTotalPrice()}
 				displayType={"text"}
 				thousandSeparator={true}
 				prefix={"$"}

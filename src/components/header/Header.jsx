@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import "./Header.styles.css";
+import { useStateValue } from "../../redux/StateProvider";
 
 const StyledBadge = withStyles((theme) => ({
 	badge: {
@@ -17,6 +18,8 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 function Header() {
+	const [{ cart }, dispatch] = useStateValue();
+
 	return (
 		<div className='header'>
 			<Link to='/'>
@@ -48,7 +51,7 @@ function Header() {
 				</div>
 				<Link to='/checkout'>
 					<div className='header__menuBasket'>
-						<StyledBadge badgeContent={0}>
+						<StyledBadge badgeContent={cart?.length}>
 							<ShoppingCartOutlinedIcon className='header__basketIcon' />
 						</StyledBadge>
 						<div className='header__basketText'>Cart</div>
