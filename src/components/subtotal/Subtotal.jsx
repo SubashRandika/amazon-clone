@@ -9,7 +9,7 @@ function Subtotal() {
 
 	// calculate total price of items in the cart.
 	const calculateTotalPrice = () => {
-		return cart.reduce((sumPrice, currentItem) => currentItem.price + sumPrice, 0);
+		return cart.reduce((sumPrice, currentItem) => currentItem.price * currentItem.quantity + sumPrice, 0);
 	};
 
 	return (

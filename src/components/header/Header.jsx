@@ -20,6 +20,10 @@ const StyledBadge = withStyles((theme) => ({
 function Header() {
 	const [{ cart }, dispatch] = useStateValue();
 
+	const getTotalCartItems = () => {
+		return cart.reduce((totalQuantity, currentItem) => totalQuantity + currentItem.quantity, 0);
+	};
+
 	return (
 		<div className='header'>
 			<Link to='/'>
@@ -51,7 +55,7 @@ function Header() {
 				</div>
 				<Link to='/checkout'>
 					<div className='header__menuBasket'>
-						<StyledBadge badgeContent={cart?.length}>
+						<StyledBadge badgeContent={getTotalCartItems()}>
 							<ShoppingCartOutlinedIcon className='header__basketIcon' />
 						</StyledBadge>
 						<div className='header__basketText'>Cart</div>

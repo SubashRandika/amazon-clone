@@ -41,7 +41,7 @@ function Product({ id, title, price, rating, image }) {
 					/>
 				</div>
 			</div>
-			<img className='product__image' src={image} alt='Lean Startup' />
+			<img className='product__image' src={image} alt='Product' />
 			<button className='product__addToCartButton' onClick={addToShoppingCart}>
 				Add to Cart
 			</button>
