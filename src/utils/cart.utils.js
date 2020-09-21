@@ -7,3 +7,7 @@ export const addItemToCart = (cartItems, itemToAdd) => {
 
 	return [...cartItems, { ...itemToAdd, quantity: 1 }];
 };
+
+export const getTotalCartItems = (cartItems) => {
+	return cartItems.reduce((totalQuantity, currentItem) => totalQuantity + currentItem.quantity, 0);
+};

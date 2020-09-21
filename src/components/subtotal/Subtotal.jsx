@@ -1,6 +1,7 @@
 import React from "react";
 import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "../../redux/StateProvider";
+import { getTotalCartItems } from "../../utils/cart.utils";
 import "./Subtotal.styles.css";
 
 function Subtotal() {
@@ -18,7 +19,7 @@ function Subtotal() {
 				renderText={(formattedValue) => (
 					<>
 						<p className='subtotal__text'>
-							Subtotal ({cart.length} items): <strong>{formattedValue}</strong>
+							Subtotal ({getTotalCartItems(cart)} items): <strong>{formattedValue}</strong>
 						</p>
 						<small className='subtotal__gift'>
 							<input type='checkbox' />

@@ -6,6 +6,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import "./Header.styles.css";
 import { useStateValue } from "../../redux/StateProvider";
+import { getTotalCartItems } from "../../utils/cart.utils";
 
 const StyledBadge = withStyles((theme) => ({
 	badge: {
@@ -19,10 +20,6 @@ const StyledBadge = withStyles((theme) => ({
 
 function Header() {
 	const [{ cart }, dispatch] = useStateValue();
-
-	const getTotalCartItems = () => {
-		return cart.reduce((totalQuantity, currentItem) => totalQuantity + currentItem.quantity, 0);
-	};
 
 	return (
 		<div className='header'>
@@ -55,7 +52,7 @@ function Header() {
 				</div>
 				<Link to='/checkout'>
 					<div className='header__menuBasket'>
-						<StyledBadge badgeContent={getTotalCartItems()}>
+						<StyledBadge badgeContent={getTotalCartItems(cart)}>
 							<ShoppingCartOutlinedIcon className='header__basketIcon' />
 						</StyledBadge>
 						<div className='header__basketText'>Cart</div>
