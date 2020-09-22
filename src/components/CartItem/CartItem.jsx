@@ -64,6 +64,7 @@ function CartItem({ id, title, price, rating, image, quantity }) {
 						type='number'
 						defaultValue={quantity}
 						startAdornment={<InputAdornment position='start'>Qty:</InputAdornment>}
+						inputProps={{ min: 1 }}
 					/>
 					<button className='cartItem__removeFromCartButton' onClick={removeFromCart}>
 						Remove from cart
