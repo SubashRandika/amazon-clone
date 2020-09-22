@@ -1,11 +1,12 @@
 import React from "react";
-import Subtotal from "../subtotal/Subtotal";
-import { useStateValue } from "../../redux/StateProvider";
-import "./Checkout.styles.css";
-import CartItem from "../cartItem/CartItem";
-import SubtotalText from "../subtotalText/SubtotalText";
 import CurrencyFormat from "react-currency-format";
+import CartItem from "../cartItem/CartItem";
+import Subtotal from "../subtotal/Subtotal";
+import SubtotalText from "../subtotalText/SubtotalText";
+import CartEmpty from "../cartEmpty/CartEmpty";
+import { useStateValue } from "../../redux/StateProvider";
 import { getCartTotalPrice } from "../../utils/cart.utils";
+import "./Checkout.styles.css";
 
 function Checkout() {
 	const [{ cart }, dispatch] = useStateValue();
@@ -47,7 +48,7 @@ function Checkout() {
 							</div>
 						</React.Fragment>
 					) : (
-						<div>No Cart Items</div>
+						<CartEmpty />
 					)}
 				</div>
 			</div>
