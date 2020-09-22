@@ -2,7 +2,7 @@ import React from "react";
 import Subtotal from "../subtotal/Subtotal";
 import { useStateValue } from "../../redux/StateProvider";
 import "./Checkout.styles.css";
-import CartItem from "../CartItem/CartItem";
+import CartItem from "../cartItem/CartItem";
 import SubtotalText from "../subtotalText/SubtotalText";
 import CurrencyFormat from "react-currency-format";
 import { getCartTotalPrice } from "../../utils/cart.utils";
