@@ -15,3 +15,13 @@ export const getTotalCartItems = (cartItems) => {
 export const getCartTotalPrice = (cartItems) => {
 	return cartItems.reduce((sumPrice, currentItem) => currentItem.price * currentItem.quantity + sumPrice, 0);
 };
+
+export const removeItemFromCart = (cartItems, id) => {
+	return cartItems.filter((cartItem) => cartItem.id !== id);
+};
+
+export const changeItemQuantity = (cartItems, item) => {
+	return cartItems.map((cartItem) =>
+		cartItem.id === item.id ? { ...cartItem, quantity: Number(item.quantity) } : cartItem
+	);
+};

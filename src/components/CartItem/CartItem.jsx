@@ -4,7 +4,9 @@ import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { withStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import { useStateValue } from "../../redux/StateProvider";
 import "./CartItem.styles.css";
+import { CHANGE_ITEM_QUANTITY, REMOVE_FROM_CART } from "../../redux/action.types";
 
 const CustomNumberInput = withStyles((theme) => ({
 	root: {
@@ -35,8 +37,23 @@ const CustomNumberInput = withStyles((theme) => ({
 }))(InputBase);
 
 function CartItem({ id, title, price, rating, image, quantity }) {
+	const [{ cart }, dispatch] = useStateValue();
+
 	const removeFromCart = () => {
-		console.log("Removed");
+		dispatch({
+			type: REMOVE_FROM_CART,
+			id
+		});
+	};
+
+	const quantityChangeHandler = (event) => {
+		dispatch({
+			type: CHANGE_ITEM_QUANTITY,
+			item: {
+				id: id,
+				quantity: event.target.value
+			}
+		});
 	};
 
 	return (
@@ -65,6 +82,7 @@ function CartItem({ id, title, price, rating, image, quantity }) {
 						defaultValue={quantity}
 						startAdornment={<InputAdornment position='start'>Qty:</InputAdornment>}
 						inputProps={{ min: 1 }}
+						onChange={quantityChangeHandler}
 					/>
 					<button className='cartItem__removeFromCartButton' onClick={removeFromCart}>
 						Remove from cart
