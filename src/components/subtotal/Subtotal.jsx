@@ -17,7 +17,7 @@ function Subtotal() {
 		<div className='subtotal'>
 			<CurrencyFormat
 				renderText={(formattedValue) => (
-					<>
+					<React.Fragment>
 						<p className='subtotal__text'>
 							Subtotal ({getTotalCartItems(cart)} items): <strong>{formattedValue}</strong>
 						</p>
@@ -25,7 +25,7 @@ function Subtotal() {
 							<input type='checkbox' />
 							<span className='subtotal__giftText'>This order contains a gift</span>
 						</small>
-					</>
+					</React.Fragment>
 				)}
 				decimalScale={2}
 				value={calculateTotalPrice()}

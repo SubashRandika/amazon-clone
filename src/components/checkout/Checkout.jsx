@@ -1,8 +1,12 @@
 import React from "react";
 import Subtotal from "../subtotal/Subtotal";
+import { useStateValue } from "../../redux/StateProvider";
 import "./Checkout.styles.css";
+import CartItem from "../CartItem/CartItem";
 
 function Checkout() {
+	const [{ cart }, dispatch] = useStateValue();
+
 	return (
 		<div className='checkout'>
 			<div className='checkout__left'>
@@ -12,9 +16,22 @@ function Checkout() {
 					alt='Advertisement'
 				/>
 				<div>
-					<h1 className='checkout__title'>Shopping Cart</h1>
-
-					{/* Cart Items */}
+					{cart.length ? <h1 className='checkout__title'>Shopping Cart</h1> : null}
+					{cart.length ? (
+						cart.map(({ id, title, price, rating, image, quantity }) => (
+							<CartItem
+								key={id}
+								id={id}
+								title={title}
+								price={price}
+								rating={rating}
+								image={image}
+								quantity={quantity}
+							/>
+						))
+					) : (
+						<div>No Cart Items</div>
+					)}
 				</div>
 			</div>
 			<div className='checkout__right'>

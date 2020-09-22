@@ -1,9 +1,9 @@
 import React from "react";
 import Rating from "@material-ui/lab/Rating";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import "./Product.styles.css";
 import { useStateValue } from "../../redux/StateProvider";
 import { ADD_TO_CART } from "../../redux/action.types";
+import "./Product.styles.css";
 
 function Product({ id, title, price, rating, image }) {
 	const [{ cart }, dispatch] = useStateValue();
