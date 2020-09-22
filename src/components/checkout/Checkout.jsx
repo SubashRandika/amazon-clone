@@ -3,6 +3,9 @@ import Subtotal from "../subtotal/Subtotal";
 import { useStateValue } from "../../redux/StateProvider";
 import "./Checkout.styles.css";
 import CartItem from "../CartItem/CartItem";
+import SubtotalText from "../subtotalText/SubtotalText";
+import CurrencyFormat from "react-currency-format";
+import { getCartTotalPrice } from "../../utils/cart.utils";
 
 function Checkout() {
 	const [{ cart }, dispatch] = useStateValue();
@@ -16,19 +19,33 @@ function Checkout() {
 					alt='Advertisement'
 				/>
 				<div>
-					{cart.length ? <h1 className='checkout__title'>Shopping Cart</h1> : null}
 					{cart.length ? (
-						cart.map(({ id, title, price, rating, image, quantity }) => (
-							<CartItem
-								key={id}
-								id={id}
-								title={title}
-								price={price}
-								rating={rating}
-								image={image}
-								quantity={quantity}
-							/>
-						))
+						<React.Fragment>
+							<h1 className='checkout__title'>Shopping Cart</h1>
+							{cart.map(({ id, title, price, rating, image, quantity }) => (
+								<CartItem
+									key={id}
+									id={id}
+									title={title}
+									price={price}
+									rating={rating}
+									image={image}
+									quantity={quantity}
+								/>
+							))}
+							<div className='checkout__listSubtotal'>
+								<CurrencyFormat
+									renderText={(formattedValue) => (
+										<SubtotalText cart={cart} formattedValue={formattedValue} />
+									)}
+									decimalScale={2}
+									value={getCartTotalPrice(cart)}
+									displayType={"text"}
+									thousandSeparator={true}
+									prefix={"$"}
+								/>
+							</div>
+						</React.Fragment>
 					) : (
 						<div>No Cart Items</div>
 					)}

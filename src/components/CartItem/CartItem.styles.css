@@ -7,10 +7,6 @@
 	border-bottom: 1px solid #dddddd;
 }
 
-.cartItem:last-child {
-	border-bottom: none;
-}
-
 .cartItem__image {
 	max-height: 200px;
 	width: 200px;

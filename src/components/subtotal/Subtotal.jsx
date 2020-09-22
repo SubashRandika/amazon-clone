@@ -1,26 +1,20 @@
 import React from "react";
 import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "../../redux/StateProvider";
-import { getTotalCartItems } from "../../utils/cart.utils";
+import { getCartTotalPrice } from "../../utils/cart.utils";
+import SubtotalText from "../subtotalText/SubtotalText";
 import "./Subtotal.styles.css";
 
 function Subtotal() {
 	// pull cart items from the data layer.
 	const [{ cart }, dispatch] = useStateValue();
 
-	// calculate total price of items in the cart.
-	const calculateTotalPrice = () => {
-		return cart.reduce((sumPrice, currentItem) => currentItem.price * currentItem.quantity + sumPrice, 0);
-	};
-
 	return (
 		<div className='subtotal'>
 			<CurrencyFormat
 				renderText={(formattedValue) => (
 					<React.Fragment>
-						<p className='subtotal__text'>
-							Subtotal ({getTotalCartItems(cart)} items): <strong>{formattedValue}</strong>
-						</p>
+						<SubtotalText cart={cart} formattedValue={formattedValue} />
 						<small className='subtotal__gift'>
 							<input type='checkbox' />
 							<span className='subtotal__giftText'>This order contains a gift</span>
@@ -28,7 +22,7 @@ function Subtotal() {
 					</React.Fragment>
 				)}
 				decimalScale={2}
-				value={calculateTotalPrice()}
+				value={getCartTotalPrice(cart)}
 				displayType={"text"}
 				thousandSeparator={true}
 				prefix={"$"}

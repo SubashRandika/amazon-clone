@@ -9,12 +9,6 @@
 	height: 120px;
 }
 
-.subtotal__text {
-	margin-bottom: 4px;
-	font-size: 17px;
-	line-height: 1.255;
-}
-
 .subtotal__gift {
 	display: flex;
 	align-items: center;

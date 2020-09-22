@@ -11,3 +11,7 @@ export const addItemToCart = (cartItems, itemToAdd) => {
 export const getTotalCartItems = (cartItems) => {
 	return cartItems.reduce((totalQuantity, currentItem) => totalQuantity + currentItem.quantity, 0);
 };
+
+export const getCartTotalPrice = (cartItems) => {
+	return cartItems.reduce((sumPrice, currentItem) => currentItem.price * currentItem.quantity + sumPrice, 0);
+};

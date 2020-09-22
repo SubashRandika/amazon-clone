@@ -19,3 +19,8 @@
 	padding: 10px;
 	border-bottom: 1px solid #dddddd;
 }
+
+.checkout__listSubtotal {
+	display: flex;
+	justify-content: flex-end;
+}
