@@ -1,4 +1,4 @@
-.signin {
+.register {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -6,13 +6,13 @@
 	background-color: #ffffff;
 }
 
-.signin__logo {
+.register__logo {
 	width: 107px;
 	margin: 12px auto;
 	object-fit: contain;
 }
 
-.signin__container {
+.register__container {
 	display: flex;
 	flex-direction: column;
 	width: 350px;
@@ -24,7 +24,7 @@
 	margin-bottom: 30px;
 }
 
-.signin__title {
+.register__title {
 	font-family: inherit;
 	font-weight: 400;
 	font-size: 28px;
@@ -33,21 +33,22 @@
 	color: #111111;
 }
 
-.signin__form {
+.register__form {
 	display: flex;
 	flex-direction: column;
 }
 
-.signin__label {
+.register__label {
 	font-family: inherit;
 	font-size: 13px;
 	font-weight: 600;
 	padding-bottom: 2px;
 	padding: 0 0 2px 2px;
 	color: #111111;
+	line-height: 19px;
 }
 
-.signin__input {
+.register__input {
 	height: 31px;
 	font-family: inherit;
 	background-color: #ffffff;
@@ -63,18 +64,42 @@
 	transition: all 100ms linear;
 }
 
-.signin__input:focus {
+.register__input:focus {
 	border-color: #e77600;
 	box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
 }
 
-.signin__button {
+.register__passwordInfo {
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 15px;
+	margin-top: -8px;
+}
+
+.register__passwordInfo p {
+	font-size: 12px;
+	line-height: 15px;
+	padding-left: 10px;
+	color: #111111;
+}
+
+.register__passwordInfo i {
+	font-family: serif;
+	font-style: italic;
+	font-size: 17px;
+	font-weight: 700;
+	padding-left: 3px;
+	margin-top: -2px;
+	color: #1291c4;
+}
+
+.register__button {
 	background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
 	border-radius: 3px;
 	border-color: #a88734 #9c7e31 #846a29;
 	border-style: solid;
 	border-width: 1px;
-	color: #111;
+	color: #111111;
 	text-decoration: none;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
 	cursor: pointer;
@@ -86,19 +111,19 @@
 	font-family: inherit;
 }
 
-.signin__button:hover {
+.register__button:hover {
 	background: linear-gradient(to bottom, #f5d78e, #eeb933);
 	border-color: #a88734 #9c7e31 #846a29;
 	color: #111;
 }
 
-.signin__button:focus {
+.register__button:focus {
 	outline: 0;
 	border-color: #e77600;
 	box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
 }
 
-.signin__agreement {
+.register__agreement {
 	font-family: inherit;
 	font-size: 12px;
 	line-height: 1.5;
@@ -106,55 +131,43 @@
 	width: 100%;
 }
 
-.signin__divider {
+.register__divider {
+	width: 100%;
+	margin-top: 26px;
+	height: 25px;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.03) 3px, transparent);
+	z-index: 0;
+	zoom: 1;
+}
+
+.register__divider::after {
+	display: block;
+	height: 25px;
+	background-color: transparent;
+	background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0), #fff);
+	z-index: 1;
+	content: "";
+}
+
+.register__signinContainer {
 	display: flex;
-	justify-content: center;
-	width: 350px;
-	margin-bottom: 14px;
-	border-bottom: 1px solid #e7e7e7;
-}
-
-.signin__divider span {
-	line-height: 1.6px;
-	font-size: 12px;
-	color: #767676;
-	font-weight: 400;
-	background-color: #ffffff;
-	padding: 0 8px;
-	position: absolute;
-}
-
-.signin__registerButton {
-	width: 350px;
-	height: 29px;
-	background: linear-gradient(to bottom, #f7f8fa, #e7e9ec);
-	border-color: #adb1b8 #a2a6ac #8d9096;
-	border-style: solid;
-	border-width: 1px;
-	border-radius: 3px;
+	justify-content: flex-start;
 	font-size: 13px;
 	font-family: inherit;
 	line-height: 19px;
-	color: #111111;
-	margin-top: 14px;
-	cursor: pointer;
+	color: #111;
+}
+
+.register__signinContainer p {
+	margin-right: 5px;
+}
+
+.register__signinContainer a {
 	text-decoration: none;
-	text-align: center;
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+	color: #0066c0;
 }
 
-.signin__registerButton:hover {
-	border-color: #a2a6ac #979aa1 #82858a;
-	background: linear-gradient(to bottom, #e7eaf0, #d9dce1);
-}
-
-.signin__registerButton:focus {
-	outline: 0;
-	border-color: #e77600;
-	box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
-}
-
-.signin__footerDivider {
+.register__footerDivider {
 	width: 100%;
 	margin-top: 30px;
 	height: 44px;
@@ -164,7 +177,7 @@
 	zoom: 1;
 }
 
-.signin__footerDivider::after {
+.register__footerDivider::after {
 	display: block;
 	height: 44px;
 	background-color: transparent;

@@ -32,7 +32,9 @@ function SignIn() {
 			<h5 className='signin__divider'>
 				<span>New to Amazon?</span>
 			</h5>
-			<button className='signin__registerButton'>Create your Amazon account</button>
+			<Link to='/register'>
+				<button className='signin__registerButton'>Create your Amazon account</button>
+			</Link>
 			<div className='signin__footerDivider'></div>
 		</div>
 	);
