@@ -82,6 +82,7 @@
 	padding: 0 15px;
 	cursor: pointer;
 	border: 1px solid transparent;
+	height: 100%;
 }
 
 .header__menuItem:hover {

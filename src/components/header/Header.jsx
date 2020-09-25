@@ -38,10 +38,12 @@ function Header() {
 			</div>
 
 			<div className='header__nav'>
-				<div className='header__menuItem'>
-					<span className='header__menuItemTextOne'>Hello Guess</span>
-					<span className='header__menuItemTextTwo'>Sign In</span>
-				</div>
+				<Link to='/signin' style={{ textDecoration: "none" }}>
+					<div className='header__menuItem'>
+						<span className='header__menuItemTextOne'>Hello Guess</span>
+						<span className='header__menuItemTextTwo'>Sign In</span>
+					</div>
+				</Link>
 				<div className='header__menuItem'>
 					<span className='header__menuItemTextOne'>Returns</span>
 					<span className='header__menuItemTextTwo'>& Orders</span>
@@ -50,7 +52,7 @@ function Header() {
 					<span className='header__menuItemTextOne'>Your</span>
 					<span className='header__menuItemTextTwo'>Prime</span>
 				</div>
-				<Link to='/checkout'>
+				<Link to='/checkout' style={{ textDecoration: "none" }}>
 					<div className='header__menuBasket'>
 						<StyledBadge badgeContent={getTotalCartItems(cart)}>
 							<ShoppingCartOutlinedIcon className='header__basketIcon' />
