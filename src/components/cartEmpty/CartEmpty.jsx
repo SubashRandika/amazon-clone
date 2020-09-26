@@ -1,7 +1,7 @@
 import React from "react";
 import "./CartEmpty.styles.css";
 
-function CartEmpty() {
+function CartEmpty({ currentUser }) {
 	return (
 		<div className='cartEmpty'>
 			<div className='cartEmpty__content'>
@@ -11,7 +11,15 @@ function CartEmpty() {
 					alt='cartEmpty'
 				/>
 				<div className='cartEmpty__info'>
-					<h2 className='cartEmpty__title'>Your Amazon Cart is empty</h2>
+					{currentUser ? (
+						<h2 className='cartEmpty__title'>
+							<span className='cartEmpty__name'>{`Hello, ${currentUser?.displayName}`}</span>
+							<br />
+							Your Amazon Cart is empty
+						</h2>
+					) : (
+						<h2 className='cartEmpty__title'>Your Amazon Cart is empty</h2>
+					)}
 					<p className='cartEmpty__description'>Shop our today's deals</p>
 				</div>
 			</div>

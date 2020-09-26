@@ -26,9 +26,15 @@
 }
 
 .cartEmpty__title {
-	font-weight: 700;
 	font-size: 21px;
+	font-weight: 700;
 	line-height: 1.3;
+}
+
+.cartEmpty__name {
+	font-size: 16px;
+	font-weight: 600;
+	color: #0066c0;
 }
 
 .cartEmpty__description {

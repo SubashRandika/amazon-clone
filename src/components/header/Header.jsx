@@ -51,7 +51,7 @@ function Header() {
 			<div className='header__nav'>
 				<div className='header__menuItem' onClick={signOutHandler}>
 					<span className='header__menuItemTextOne'>
-						Hello {currentUser ? currentUser.displayName : "Guess"}
+						Hello {currentUser ? currentUser?.displayName : "Guest"}
 					</span>
 					<span className='header__menuItemTextTwo'>{currentUser ? "Sign Out" : "Sign In"}</span>
 				</div>

@@ -20,6 +20,12 @@
 	border-bottom: 1px solid #dddddd;
 }
 
+.checkout__name {
+	font-size: 16px;
+	font-weight: 600;
+	color: #0066c0;
+}
+
 .checkout__listSubtotal {
 	display: flex;
 	justify-content: flex-end;

@@ -9,7 +9,7 @@ import { getCartTotalPrice } from "../../utils/cart.utils";
 import "./Checkout.styles.css";
 
 function Checkout() {
-	const [{ cart }, dispatch] = useStateValue();
+	const [{ cart, currentUser }, dispatch] = useStateValue();
 
 	return (
 		<div className='checkout'>
@@ -22,7 +22,15 @@ function Checkout() {
 				<div>
 					{cart.length ? (
 						<React.Fragment>
-							<h1 className='checkout__title'>Shopping Cart</h1>
+							{currentUser ? (
+								<h1 className='checkout__title'>
+									<span className='checkout__name'>{`Hello, ${currentUser?.displayName}`}</span>
+									<br />
+									Your Shopping Cart
+								</h1>
+							) : (
+								<h1 className='checkout__title'>Shopping Cart</h1>
+							)}
 							{cart.map(({ id, title, price, rating, image, quantity }) => (
 								<CartItem
 									key={id}
@@ -48,7 +56,7 @@ function Checkout() {
 							</div>
 						</React.Fragment>
 					) : (
-						<CartEmpty />
+						<CartEmpty currentUser={currentUser} />
 					)}
 				</div>
 			</div>
