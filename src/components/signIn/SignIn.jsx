@@ -1,8 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { auth } from "../../firebase/firebase.config";
 import "./SignIn.styles.css";
 
 function SignIn() {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const history = useHistory();
+
+	const signInHandler = async (event) => {
+		event.preventDefault();
+
+		try {
+			await auth.signInWithEmailAndPassword(email, password);
+			history.push("/");
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<div className='signin'>
 			<Link to='/'>
@@ -18,12 +34,26 @@ function SignIn() {
 					<label className='signin__label' htmlFor='email'>
 						Email
 					</label>
-					<input className='signin__input' type='text' name='email' />
+					<input
+						className='signin__input'
+						type='text'
+						name='email'
+						value={email}
+						onChange={(event) => setEmail(event.target.value)}
+					/>
 					<label className='signin__label' htmlFor='password'>
 						Password
 					</label>
-					<input className='signin__input' type='password' name='password' />
-					<button className='signin__button'>Sign-In</button>
+					<input
+						className='signin__input'
+						type='password'
+						name='password'
+						value={password}
+						onChange={(event) => setPassword(event.target.value)}
+					/>
+					<button className='signin__button' type='submit' onClick={signInHandler}>
+						Sign-In
+					</button>
 				</form>
 				<p className='signin__agreement'>
 					By continuing, you agree to Amazon Clone Conditions of Use and Privacy Notice.

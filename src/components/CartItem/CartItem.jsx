@@ -37,7 +37,7 @@ const CustomNumberInput = withStyles((theme) => ({
 }))(InputBase);
 
 function CartItem({ id, title, price, rating, image, quantity }) {
-	const [{ cart }, dispatch] = useStateValue();
+	const [{}, dispatch] = useStateValue();
 
 	const removeFromCart = () => {
 		dispatch({

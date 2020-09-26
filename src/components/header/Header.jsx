@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
@@ -7,6 +7,7 @@ import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import "./Header.styles.css";
 import { useStateValue } from "../../redux/StateProvider";
 import { getTotalCartItems } from "../../utils/cart.utils";
+import { auth } from "../../firebase/firebase.config";
 
 const StyledBadge = withStyles((theme) => ({
 	badge: {
@@ -19,7 +20,17 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 function Header() {
-	const [{ cart }, dispatch] = useStateValue();
+	const [{ cart, currentUser }, dispatch] = useStateValue();
+	const history = useHistory();
+
+	const signOutHandler = () => {
+		if (currentUser) {
+			auth.signOut();
+			history.push("/");
+		} else {
+			history.push("/signin");
+		}
+	};
 
 	return (
 		<div className='header'>
@@ -38,12 +49,12 @@ function Header() {
 			</div>
 
 			<div className='header__nav'>
-				<Link to='/signin' style={{ textDecoration: "none" }}>
-					<div className='header__menuItem'>
-						<span className='header__menuItemTextOne'>Hello Guess</span>
-						<span className='header__menuItemTextTwo'>Sign In</span>
-					</div>
-				</Link>
+				<div className='header__menuItem' onClick={signOutHandler}>
+					<span className='header__menuItemTextOne'>
+						Hello {currentUser ? currentUser.displayName : "Guess"}
+					</span>
+					<span className='header__menuItemTextTwo'>{currentUser ? "Sign Out" : "Sign In"}</span>
+				</div>
 				<div className='header__menuItem'>
 					<span className='header__menuItemTextOne'>Returns</span>
 					<span className='header__menuItemTextTwo'>& Orders</span>

@@ -1,8 +1,9 @@
 import { addItemToCart, removeItemFromCart, changeItemQuantity } from "../utils/cart.utils";
-import { ADD_TO_CART, REMOVE_FROM_CART, CHANGE_ITEM_QUANTITY } from "./action.types";
+import { ADD_TO_CART, REMOVE_FROM_CART, CHANGE_ITEM_QUANTITY, SET_SIGNIN_USER } from "./action.types";
 
 export const initialState = {
-	cart: []
+	cart: [],
+	currentUser: null
 };
 
 const reducer = (state, action) => {
@@ -21,6 +22,11 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				cart: changeItemQuantity(state.cart, action.item)
+			};
+		case SET_SIGNIN_USER:
+			return {
+				...state,
+				currentUser: action.currentUser
 			};
 		default:
 			return state;
