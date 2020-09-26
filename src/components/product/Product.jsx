@@ -1,12 +1,13 @@
 import React from "react";
 import Rating from "@material-ui/lab/Rating";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+import { motion } from "framer-motion";
 import { useStateValue } from "../../redux/StateProvider";
 import { ADD_TO_CART } from "../../redux/action.types";
 import "./Product.styles.css";
 
 function Product({ id, title, price, rating, image }) {
-	const [{ cart }, dispatch] = useStateValue();
+	const [{}, dispatch] = useStateValue();
 
 	// dispatch item into shopping cart here.
 	const addToShoppingCart = () => {
@@ -22,8 +23,22 @@ function Product({ id, title, price, rating, image }) {
 		});
 	};
 
+	const variants = {
+		hidden: {
+			scale: 0.9,
+			opacity: 0
+		},
+		visible: {
+			scale: 1,
+			opacity: 1,
+			transition: {
+				delay: 0.2
+			}
+		}
+	};
+
 	return (
-		<div key={id} className='product'>
+		<motion.div key={id} className='product' initial='hidden' animate='visible' variants={variants}>
 			<div className='product__header'>
 				<p>{title}</p>
 				<p className='product__price'>
@@ -45,7 +60,7 @@ function Product({ id, title, price, rating, image }) {
 			<button className='product__addToCartButton' onClick={addToShoppingCart}>
 				Add to Cart
 			</button>
-		</div>
+		</motion.div>
 	);
 }
 

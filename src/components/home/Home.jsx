@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Product from "../product/Product";
 import "./Home.styles.css";
 
@@ -6,7 +7,10 @@ function Home() {
 	return (
 		<div className='home'>
 			<div className='home__container'>
-				<img
+				<motion.img
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ duration: 0.5 }}
 					className='home__image'
 					src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_1x._CB432458380_.jpg'
 					alt='Home banner'
