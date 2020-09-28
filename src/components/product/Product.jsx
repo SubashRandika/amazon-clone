@@ -7,7 +7,9 @@ import { ADD_TO_CART } from "../../redux/action.types";
 import "./Product.styles.css";
 
 function Product({ id, title, price, rating, image }) {
-	const [{}, dispatch] = useStateValue();
+	// Use `const [state, dispatch] = useStateValue()` way if needed both state and dispatch.
+	// Otherwise use like following way to get either state or dispatch.
+	const dispatch = useStateValue()[1];
 
 	// dispatch item into shopping cart here.
 	const addToShoppingCart = () => {

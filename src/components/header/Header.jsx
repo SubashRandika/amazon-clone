@@ -20,7 +20,9 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 function Header() {
-	const [{ cart, currentUser }, dispatch] = useStateValue();
+	// Use `const [state, dispatch] = useStateValue()` way if needed both state and dispatch.
+	// Otherwise use like following way to get either state or dispatch.
+	const { cart, currentUser } = useStateValue()[0];
 	const history = useHistory();
 
 	const signOutHandler = () => {

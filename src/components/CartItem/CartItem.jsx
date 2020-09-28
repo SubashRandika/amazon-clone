@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Rating from "@material-ui/lab/Rating";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { withStyles } from "@material-ui/core/styles";
@@ -37,7 +38,24 @@ const CustomNumberInput = withStyles((theme) => ({
 }))(InputBase);
 
 function CartItem({ id, title, price, rating, image, quantity }) {
-	const [{}, dispatch] = useStateValue();
+	// Use `const [state, dispatch] = useStateValue()` way if needed both state and dispatch.
+	// Otherwise use like following way to get either state or dispatch.
+	const dispatch = useStateValue()[1];
+
+	const cartItems = {
+		hidden: {
+			scale: 0,
+			transition: {
+				duration: 0.3
+			}
+		},
+		visible: {
+			scale: 1,
+			transition: {
+				duration: 0.3
+			}
+		}
+	};
 
 	const removeFromCart = () => {
 		dispatch({
@@ -57,7 +75,7 @@ function CartItem({ id, title, price, rating, image, quantity }) {
 	};
 
 	return (
-		<div key={id} className='cartItem'>
+		<motion.div key={id} className='cartItem' variants={cartItems}>
 			<img className='cartItem__image' src={image} alt='cart item' />
 			<div className='cartItem__details'>
 				<p className='cartItem__title'>{title}</p>
@@ -89,7 +107,7 @@ function CartItem({ id, title, price, rating, image, quantity }) {
 					</button>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }
 

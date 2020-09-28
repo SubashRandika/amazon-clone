@@ -1,5 +1,6 @@
 import React from "react";
 import CurrencyFormat from "react-currency-format";
+import { motion } from "framer-motion";
 import CartItem from "../cartItem/CartItem";
 import Subtotal from "../subtotal/Subtotal";
 import SubtotalText from "../subtotalText/SubtotalText";
@@ -9,7 +10,22 @@ import { getCartTotalPrice } from "../../utils/cart.utils";
 import "./Checkout.styles.css";
 
 function Checkout() {
-	const [{ cart, currentUser }, dispatch] = useStateValue();
+	// Use `const [state, dispatch] = useStateValue()` way if you needed both state and dispatch.
+	// Otherwise use like following way to get either state or dispatch.
+	const { cart, currentUser } = useStateValue()[0];
+
+	const cartItemsContainer = {
+		hidden: {
+			transition: {
+				staggerChildren: 0.1
+			}
+		},
+		visible: {
+			transition: {
+				staggerChildren: 0.1
+			}
+		}
+	};
 
 	return (
 		<div className='checkout'>
@@ -31,17 +47,19 @@ function Checkout() {
 							) : (
 								<h1 className='checkout__title'>Shopping Cart</h1>
 							)}
-							{cart.map(({ id, title, price, rating, image, quantity }) => (
-								<CartItem
-									key={id}
-									id={id}
-									title={title}
-									price={price}
-									rating={rating}
-									image={image}
-									quantity={quantity}
-								/>
-							))}
+							<motion.div variants={cartItemsContainer} initial='hidden' animate='visible'>
+								{cart.map(({ id, title, price, rating, image, quantity }) => (
+									<CartItem
+										key={id}
+										id={id}
+										title={title}
+										price={price}
+										rating={rating}
+										image={image}
+										quantity={quantity}
+									/>
+								))}
+							</motion.div>
 							<div className='checkout__listSubtotal'>
 								<CurrencyFormat
 									renderText={(formattedValue) => (

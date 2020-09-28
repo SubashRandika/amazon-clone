@@ -12,7 +12,9 @@ import { useStateValue } from "./redux/StateProvider";
 import { SET_SIGNIN_USER } from "./redux/action.types";
 
 function App() {
-	const [{}, dispatch] = useStateValue();
+	// Use `const [state, dispatch] = useStateValue()` way if needed both state and dispatch.
+	// Otherwise use like following way to get either state or dispatch.
+	const dispatch = useStateValue()[1];
 
 	useEffect(() => {
 		auth.onAuthStateChanged(async (authUser) => {

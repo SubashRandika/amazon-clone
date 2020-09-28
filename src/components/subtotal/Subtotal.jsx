@@ -7,7 +7,7 @@ import "./Subtotal.styles.css";
 
 function Subtotal() {
 	// pull cart items from the data layer.
-	const [{ cart }, dispatch] = useStateValue();
+	const { cart } = useStateValue()[0];
 
 	return (
 		<div className='subtotal'>
