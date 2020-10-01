@@ -1,0 +1,78 @@
+.payment {
+	background-color: #ffffff;
+	height: max-content;
+}
+
+.payment__container {
+	padding-bottom: 30px;
+}
+
+.payment__header {
+	text-align: center;
+	padding: 10px;
+	font-size: 30px;
+	font-family: inherit;
+	font-weight: 400;
+}
+
+.payment__header > span {
+	color: #111111;
+	padding-right: 10px;
+}
+
+.payment__detailsContainer {
+	margin: 0 10%;
+	border: 1px solid #d5d9d9;
+	border-radius: 8px;
+}
+
+.payment__recipientInfo > span {
+	color: #007185;
+	display: block;
+	margin-bottom: 20px;
+}
+
+.payment__address {
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	border: 1px solid #a2a6ac;
+	width: 50%;
+	line-height: 1.2;
+	padding: 10px 12px;
+	color: #888888;
+}
+
+.payment__address[contenteditable]:focus {
+	outline: none;
+	border: 1px solid #e77600;
+	box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+	line-height: 0.9;
+}
+
+.payment__section {
+	display: flex;
+	padding: 20px;
+	margin: 0 20px;
+}
+
+.payment__section:not(:last-child) {
+	border-bottom: 1px solid #cccccc;
+}
+
+.payment__title {
+	flex: 0.2;
+	color: #111111;
+}
+
+.payment__recipientInfo,
+.payment__items,
+.payment__details {
+	flex: 0.8;
+}
+
+.payment__items > .cartItem {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}

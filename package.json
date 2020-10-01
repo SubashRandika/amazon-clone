@@ -12,6 +12,7 @@
     "firebase": "^7.21.1",
     "framer-motion": "^2.7.5",
     "react": "^16.13.1",
+    "react-contenteditable": "^3.3.5",
     "react-currency-format": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",

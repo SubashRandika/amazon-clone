@@ -4,6 +4,9 @@
 	height: 200px;
 	margin: 12px;
 	padding-bottom: 15px;
+}
+
+.divider {
 	border-bottom: 1px solid #dddddd;
 }
 

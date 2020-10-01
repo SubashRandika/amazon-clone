@@ -37,7 +37,7 @@ const CustomNumberInput = withStyles((theme) => ({
 	}
 }))(InputBase);
 
-function CartItem({ id, title, price, rating, image, quantity }) {
+function CartItem({ id, title, price, rating, image, quantity, divider }) {
 	// Use `const [state, dispatch] = useStateValue()` way if needed both state and dispatch.
 	// Otherwise use like following way to get either state or dispatch.
 	const dispatch = useStateValue()[1];
@@ -75,7 +75,7 @@ function CartItem({ id, title, price, rating, image, quantity }) {
 	};
 
 	return (
-		<motion.div key={id} className='cartItem' variants={cartItems}>
+		<motion.div key={id} className={`cartItem ${divider ? "divider" : ""}`} variants={cartItems}>
 			<img className='cartItem__image' src={image} alt='cart item' />
 			<div className='cartItem__details'>
 				<p className='cartItem__title'>{title}</p>

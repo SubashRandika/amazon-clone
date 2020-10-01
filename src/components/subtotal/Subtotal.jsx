@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "../../redux/StateProvider";
 import { getCartTotalPrice } from "../../utils/cart.utils";
@@ -7,7 +8,16 @@ import "./Subtotal.styles.css";
 
 function Subtotal() {
 	// pull cart items from the data layer.
-	const { cart } = useStateValue()[0];
+	const { cart, currentUser } = useStateValue()[0];
+	const history = useHistory();
+
+	const handlePaymentCheckout = (event) => {
+		if (currentUser) {
+			history.push("/payment");
+		} else {
+			history.push("/signin");
+		}
+	};
 
 	return (
 		<div className='subtotal'>
@@ -27,7 +37,9 @@ function Subtotal() {
 				thousandSeparator={true}
 				prefix={"$"}
 			/>
-			<button className='subtotal__checkoutButton'>Proceed to checkout</button>
+			<button className='subtotal__checkoutButton' onClick={handlePaymentCheckout}>
+				Proceed to checkout
+			</button>
 		</div>
 	);
 }

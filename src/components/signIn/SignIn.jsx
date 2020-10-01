@@ -13,7 +13,7 @@ function SignIn() {
 
 		try {
 			await auth.signInWithEmailAndPassword(email, password);
-			history.push("/");
+			history.goBack();
 		} catch (error) {
 			console.log(error);
 		}

@@ -57,6 +57,7 @@ function Checkout() {
 										rating={rating}
 										image={image}
 										quantity={quantity}
+										divider={true}
 									/>
 								))}
 							</motion.div>
