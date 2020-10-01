@@ -67,12 +67,26 @@
 }
 
 .payment__recipientInfo,
-.payment__items,
-.payment__details {
+.payment__items {
 	flex: 0.8;
+}
+
+.payment__details {
+	flex: 0.25;
 }
 
 .payment__items > .cartItem {
 	margin-bottom: 0;
 	padding-bottom: 0;
+}
+
+.payment__priceContainer > p {
+	font-size: 16px;
+	font-weight: 600;
+	color: #111111;
+}
+
+.payment__priceValue {
+	font-weight: 500;
+	color: #b12704;
 }
