@@ -1,5 +1,5 @@
 import { addItemToCart, removeItemFromCart, changeItemQuantity } from "../utils/cart.utils";
-import { ADD_TO_CART, REMOVE_FROM_CART, CHANGE_ITEM_QUANTITY, SET_SIGNIN_USER } from "./action.types";
+import { ADD_TO_CART, REMOVE_FROM_CART, CHANGE_ITEM_QUANTITY, SET_SIGNIN_USER, CLEAR_CART } from "./action.types";
 
 export const initialState = {
 	cart: [],
@@ -17,6 +17,11 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				cart: removeItemFromCart(state.cart, action.id)
+			};
+		case CLEAR_CART:
+			return {
+				...state,
+				cart: []
 			};
 		case CHANGE_ITEM_QUANTITY:
 			return {

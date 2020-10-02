@@ -11,6 +11,7 @@ import axios from "../../http/axios";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CartItem from "../cartItem/CartItem";
 import { useStateValue } from "../../redux/StateProvider";
+import { CLEAR_CART } from "../../redux/action.types";
 import { getCartTotalPrice, getTotalCartItems } from "../../utils/cart.utils";
 import "./Payment.styles.css";
 
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Payment() {
-	const { cart, currentUser } = useStateValue()[0];
+	const [{ cart, currentUser }, dispatch] = useStateValue();
 	const totalCartItems = getTotalCartItems(cart);
 	const addressInput = useRef("Please enter your delivery address here");
 	const classes = useStyles();
@@ -67,7 +68,7 @@ function Payment() {
 				method: "post",
 				// stripe expect the total in a currencies subunits.
 				// that is why dollar value need to multiply by 100.
-				url: `/payments/create?total=${getCartTotalPrice(cart) * 100}`
+				url: `/payments/create?total=${Math.round(getCartTotalPrice(cart) * 100)}`
 			});
 
 			setClientSecret(response.data.clientSecret);
@@ -100,6 +101,10 @@ function Payment() {
 				setSucceeded(true);
 				setError(null);
 				setProcessing(false);
+
+				dispatch({
+					type: CLEAR_CART
+				});
 
 				// use replace over push here to coming back to payments page
 				// by routing the user to orders page.
