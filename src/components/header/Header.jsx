@@ -57,10 +57,12 @@ function Header() {
 					</span>
 					<span className='header__menuItemTextTwo'>{currentUser ? "Sign Out" : "Sign In"}</span>
 				</div>
-				<div className='header__menuItem'>
-					<span className='header__menuItemTextOne'>Returns</span>
-					<span className='header__menuItemTextTwo'>& Orders</span>
-				</div>
+				<Link to={currentUser ? "/orders" : "/signin"}>
+					<div className='header__menuItem'>
+						<span className='header__menuItemTextOne'>Returns</span>
+						<span className='header__menuItemTextTwo'>& Orders</span>
+					</div>
+				</Link>
 				<div className='header__menuItem'>
 					<span className='header__menuItemTextOne'>Your</span>
 					<span className='header__menuItemTextTwo'>Prime</span>

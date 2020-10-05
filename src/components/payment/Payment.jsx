@@ -13,6 +13,7 @@ import CartItem from "../cartItem/CartItem";
 import { useStateValue } from "../../redux/StateProvider";
 import { CLEAR_CART } from "../../redux/action.types";
 import { getCartTotalPrice, getTotalCartItems } from "../../utils/cart.utils";
+import { db } from "../../firebase/firebase.config";
 import "./Payment.styles.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -51,6 +52,7 @@ function Payment() {
 	const [{ cart, currentUser }, dispatch] = useStateValue();
 	const totalCartItems = getTotalCartItems(cart);
 	const addressInput = useRef("Please enter your delivery address here");
+	const [address, setAddress] = useState("");
 	const classes = useStyles();
 	const history = useHistory();
 	const stripe = useStripe();
@@ -68,17 +70,26 @@ function Payment() {
 				method: "post",
 				// stripe expect the total in a currencies subunits.
 				// that is why dollar value need to multiply by 100.
-				url: `/payments/create?total=${Math.round(getCartTotalPrice(cart) * 100)}`
+				url: `/payments/create?total=${Math.round(getCartTotalPrice(cart) * 100)}`,
+				data: {
+					name: currentUser?.displayName,
+					email: currentUser?.email,
+					address: address
+				}
 			});
 
 			setClientSecret(response.data.clientSecret);
 		};
 
 		getClientSecret();
-	}, [cart]);
+	}, [cart, currentUser, address]);
 
 	const handleAddressChange = (event) => {
 		addressInput.current = event.target.value;
+	};
+
+	const handleAddressBlur = () => {
+		setAddress(addressInput.current);
 	};
 
 	const handleCheckout = () => {
@@ -90,7 +101,7 @@ function Payment() {
 		event.preventDefault();
 		setProcessing(true);
 
-		const payload = await stripe
+		await stripe
 			.confirmCardPayment(clientSecret, {
 				payment_method: {
 					card: elements.getElement(CardElement)
@@ -98,6 +109,16 @@ function Payment() {
 			})
 			.then(({ paymentIntent }) => {
 				// paymentIntent is Stripe payment confirmation.
+
+				db.doc(`users/${currentUser?.id}`).collection("orders").doc(paymentIntent.id).set({
+					cart: cart,
+					amount: paymentIntent.amount,
+					name: paymentIntent.shipping.name,
+					address: paymentIntent.shipping.address.line1,
+					currency: paymentIntent.currency,
+					createdAt: paymentIntent.created
+				});
+
 				setSucceeded(true);
 				setError(null);
 				setProcessing(false);
@@ -159,6 +180,7 @@ function Payment() {
 							<ContentEditable
 								className='payment__address'
 								html={addressInput.current}
+								onBlur={handleAddressBlur}
 								onChange={handleAddressChange}
 							/>
 						</div>

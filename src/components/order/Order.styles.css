@@ -1,0 +1,6 @@
+.order__image {
+	max-height: 50px;
+	width: 100px;
+	object-fit: contain;
+	cursor: zoom-in;
+}

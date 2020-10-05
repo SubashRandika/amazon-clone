@@ -17,10 +17,18 @@ app.get("/", (req, res) => res.status(200).send("Hello World"));
 
 app.post("/payments/create", async (req, res) => {
 	const total = req.query.total;
+	const { name, email, address } = req.body;
 
 	const paymentIntent = await stripe.paymentIntents.create({
 		amount: total, // price in subunits of currency.
-		currency: "usd"
+		currency: "usd",
+		receipt_email: email,
+		shipping: {
+			name: name,
+			address: {
+				line1: address
+			}
+		}
 	});
 
 	// OK - Created

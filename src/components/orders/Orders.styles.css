@@ -1,0 +1,13 @@
+.orders {
+	background-color: #ffffff;
+	height: max-content;
+	padding: 40px 10%;
+}
+
+.orders__title {
+	font-size: 30px;
+	font-family: inherit;
+	font-weight: 600;
+	padding: 10px;
+	color: #111111;
+}

@@ -8,6 +8,7 @@ import Checkout from "./components/checkout/Checkout";
 import SignIn from "./components/signIn/SignIn";
 import Register from "./components/register/Register";
 import Payment from "./components/payment/Payment";
+import Orders from "./components/orders/Orders";
 import { auth } from "./firebase/firebase.config";
 import { createUserProfileDocument } from "./utils/firebase.utils";
 import { useStateValue } from "./redux/StateProvider";
@@ -49,6 +50,10 @@ function App() {
 		<Router>
 			<div className='App'>
 				<Switch>
+					<Route path='/orders'>
+						<Header />
+						<Orders />
+					</Route>
 					<Route path='/register'>
 						<Register />
 					</Route>
