@@ -224,8 +224,17 @@ function Payment() {
 										thousandSeparator={true}
 										prefix={"$"}
 									/>
-									<button className='payment__buyNow' type='submit' disabled={processing || disabled || succeeded}>
-										<span>{processing ? <p>Processing</p> : "Buy Now"}</span>
+									<button
+										className='payment__buyNow'
+										type='submit'
+										disabled={processing || disabled || succeeded}
+									>
+										<span className='payment__stripeIcon'>
+											<img src='https://img.icons8.com/material-rounded/452/stripe.png' alt='' />
+										</span>
+										<span className='payment__btnText'>
+											{processing ? <p>Processing</p> : "Buy Now"}
+										</span>
 									</button>
 								</div>
 								{error && (
