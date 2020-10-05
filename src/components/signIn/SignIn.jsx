@@ -24,7 +24,7 @@ function SignIn() {
 			<Link to='/'>
 				<img
 					className='signin__logo'
-					src='http://pngimg.com/uploads/amazon/amazon_PNG24.png'
+					src='https://pngimg.com/uploads/amazon/amazon_PNG24.png'
 					alt='Amazon Logo'
 				/>
 			</Link>
